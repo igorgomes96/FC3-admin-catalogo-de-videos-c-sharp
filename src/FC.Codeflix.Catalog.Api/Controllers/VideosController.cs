@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FC.Codeflix.Catalog.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 [Authorize(Policy = Policies.VideosManager)]
 public class VideosController : ControllerBase
 {

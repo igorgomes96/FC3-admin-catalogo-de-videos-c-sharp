@@ -78,7 +78,7 @@ public class ApiClient
             _defaultSerializeOptions
         );
         var response = await _httpClient.PostAsync(
-            route,
+            $"/api{route}",
             new StringContent(
                 payloadJson,
                 Encoding.UTF8,
@@ -94,7 +94,7 @@ public class ApiClient
     ) where TOutput : class
     {
         var response = await _httpClient.PutAsync(
-            route,
+            $"/api{route}",
             new StringContent(
                 JsonSerializer.Serialize(
                     payload,
@@ -113,7 +113,7 @@ public class ApiClient
         object? queryStringParametersObject = null 
     ) where TOutput : class
     {
-        var url = PrepareGetRoute(route, queryStringParametersObject);
+        var url = PrepareGetRoute($"/api{route}", queryStringParametersObject);
         var response = await _httpClient.GetAsync(url);
         var output = await GetOutput<TOutput>(response);
         return (response, output);
@@ -122,7 +122,7 @@ public class ApiClient
         string route
     ) where TOutput : class
     {
-        var response = await _httpClient.DeleteAsync(route);
+        var response = await _httpClient.DeleteAsync($"/api{route}");
         var output = await GetOutput<TOutput>(response);
         return (response, output);
     }
@@ -167,7 +167,7 @@ public class ApiClient
         {
             { fileContent, "media_file", $"media.{file.Extension}" }
         };
-        var response = await _httpClient.PostAsync(route, content);
+        var response = await _httpClient.PostAsync($"/api{route}", content);
         var output = await GetOutput<TOutput>(response);
         return (response, output);
     }

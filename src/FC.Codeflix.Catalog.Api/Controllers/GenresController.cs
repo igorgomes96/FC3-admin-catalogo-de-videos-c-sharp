@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FC.Codeflix.Catalog.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 [Authorize(Roles = $"{Roles.Genres},{Roles.Admin}")]
 public class GenresController : ControllerBase
 {

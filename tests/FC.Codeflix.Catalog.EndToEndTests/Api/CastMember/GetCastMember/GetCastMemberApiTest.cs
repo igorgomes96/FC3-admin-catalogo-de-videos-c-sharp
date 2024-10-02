@@ -29,7 +29,7 @@ public class GetCastMemberApiTest : IDisposable
 
         var (response, output) =
             await _fixture.ApiClient.Get<ApiResponse<CastMemberModelOutput>>(
-                $"cast_members/{example.Id.ToString()}"
+                $"/cast_members/{example.Id.ToString()}"
             );
 
         response.Should().NotBeNull();
@@ -52,7 +52,7 @@ public class GetCastMemberApiTest : IDisposable
 
         var (response, output) =
             await _fixture.ApiClient.Get<ProblemDetails>(
-                $"cast_members/{randomGuid.ToString()}"
+                $"/cast_members/{randomGuid.ToString()}"
             );
 
         response.Should().NotBeNull();

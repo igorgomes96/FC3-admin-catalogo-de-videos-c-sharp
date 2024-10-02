@@ -29,7 +29,7 @@ public class DeleteCastMemberApiTest : IDisposable
 
         var (response, output) =
             await _fixture.ApiClient.Delete<object>(
-                $"cast_members/{example.Id.ToString()}"
+                $"/cast_members/{example.Id.ToString()}"
             );
 
         response.Should().NotBeNull();
@@ -49,7 +49,7 @@ public class DeleteCastMemberApiTest : IDisposable
 
         var (response, output) =
             await _fixture.ApiClient.Delete<ProblemDetails>(
-                $"cast_members/{randomGuid.ToString()}"
+                $"/cast_members/{randomGuid.ToString()}"
             );
 
         response.Should().NotBeNull();
