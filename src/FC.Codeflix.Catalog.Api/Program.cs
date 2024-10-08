@@ -17,6 +17,9 @@ builder.Services
     }));
 
 var app = builder.Build();
+
+app.MapGet("/health", () => Results.Ok());
+
 app.UseHttpLogging();
 app.MigrateDatabase();
 app.UseDocumentation();
